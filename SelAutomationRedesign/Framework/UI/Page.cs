@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using SelAutomationRedesign.Framework.UI.Controls;
 
 namespace SelAutomationRedesign.Framework.UI
 {
-    class Page
+    public abstract class Page
     {
         public IWebDriver Driver { get; }
 
-        public Page( IWebDriver driverValue )
+        protected Page( IWebDriver driverValue )
         {
             Driver = driverValue;
         }
@@ -23,8 +24,9 @@ namespace SelAutomationRedesign.Framework.UI
 
         public bool IsTextPresent( string text )
         {
-
-            return true;
+            var locatorText = string.Format( $"//*[text()='{text}' or contains(text(), '{text}')]" );
+            var element = new Controller( this, By.XPath( locatorText ) );
+            return element.Displayed();
         }
     }
 }
