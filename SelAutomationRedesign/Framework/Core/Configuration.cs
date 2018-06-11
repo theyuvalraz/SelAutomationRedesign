@@ -14,6 +14,7 @@ namespace SelAutomationRedesign.Framework.Core
 
         public static string Get( string value )
         {
+
             return ConfigurationManager.AppSettings[value];
         }
     }

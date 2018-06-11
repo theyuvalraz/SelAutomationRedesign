@@ -45,9 +45,9 @@ namespace SelAutomationRedesign
         public void LuckyTest()
         {
             _indexPage.Navigate();
+            Assert.That( _indexPage.FeelingLuckyButton.Element.GetAttribute( "value" ) == "I\'m Feeling Lucky" );
             _indexPage.FeelingLuckyButton.Click();
             Assert.That( _driver.Title == "Google Doodles" );
-
         }
 
     }
