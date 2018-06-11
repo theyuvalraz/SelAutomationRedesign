@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Framework\Core\Configuration.cs" />
+    <Compile Include="Framework\UI\Ipage.cs" />
+    <Compile Include="Framework\UI\Page.cs" />
     <Compile Include="SelAutomation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
