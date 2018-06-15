@@ -14,7 +14,7 @@ namespace SelAutomationRedesign
             var options = new ChromeOptions();
             options.AddArguments("--lang=en-GB", "start-maximized");
             _driver = new ChromeDriver(options);
-            _indexPage = new IndexPage(_driver);
+            _indexPage = new GoogleSearchPage(_driver);
         }
 
 
@@ -25,7 +25,7 @@ namespace SelAutomationRedesign
         }
 
         private IWebDriver _driver;
-        private IndexPage _indexPage;
+        private GoogleSearchPage _indexPage;
 
 
         [TestCase]

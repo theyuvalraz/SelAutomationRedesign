@@ -5,14 +5,14 @@ using SelAutomationRedesign.Framework.UI.Controls;
 
 namespace SelAutomationRedesign.Pages
 {
-    internal class IndexPage : Page
+    internal class GoogleSearchPage : Page
     {
         public Controller FeelingLuckyButton;
         public Controller SearchButton;
         public FieldEdit SearchField;
 
 
-        public IndexPage(IWebDriver driverValue) : base(driverValue)
+        public GoogleSearchPage(IWebDriver driverValue) : base(driverValue)
         {
             FeelingLuckyButton = new Controller(this, By.XPath("//*/center/input[2]"));
             SearchButton = new Controller(this, By.XPath("//*/center/input[1]"));
