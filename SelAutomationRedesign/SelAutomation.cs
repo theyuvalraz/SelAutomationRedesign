@@ -1,10 +1,6 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Html5;
-using OpenQA.Selenium.Remote;
-using SelAutomationRedesign.Framework.Core;
 using SelAutomationRedesign.Pages;
 
 namespace SelAutomationRedesign
@@ -12,18 +8,13 @@ namespace SelAutomationRedesign
     [TestFixture]
     public class SelAutomation
     {
-        private IWebDriver _driver;
-        private IndexPage _indexPage;
-
-
         [SetUp]
         public void Setup()
         {
             var options = new ChromeOptions();
-            options.AddArguments( "--lang=en-GB", "start-maximized");
-            _driver = new ChromeDriver( options );
+            options.AddArguments("--lang=en-GB", "start-maximized");
+            _driver = new ChromeDriver(options);
             _indexPage = new IndexPage(_driver);
-            
         }
 
 
@@ -33,22 +24,33 @@ namespace SelAutomationRedesign
             _driver.Quit();
         }
 
+        private IWebDriver _driver;
+        private IndexPage _indexPage;
+
 
         [TestCase]
         public void BasicsTest()
         {
             _indexPage.Navigate();
-            Assert.That( _driver.Title == "Google");
+            Assert.That(_driver.Title == "Google");
         }
 
         [TestCase]
         public void LuckyTest()
         {
             _indexPage.Navigate();
-            Assert.That( _indexPage.FeelingLuckyButton.Element.GetAttribute( "value" ) == "I\'m Feeling Lucky" );
+            Assert.That(_indexPage.FeelingLuckyButton.Element.GetAttribute("value") == "I\'m Feeling Lucky");
             _indexPage.FeelingLuckyButton.Click();
-            Assert.That( _driver.Title == "Google Doodles" );
+            Assert.That(_driver.Title == "Google Doodles");
         }
 
+        [TestCase]
+        public void SearchTest()
+        {
+            _indexPage.Navigate();
+            _indexPage.SearchField.Text = "theyuvalraz";
+            _indexPage.FeelingLuckyButton.Click();
+            Assert.That(_driver.Url == "https://github.com/theyuvalraz");
+        }
     }
 }

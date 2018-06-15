@@ -8,22 +8,22 @@ namespace SelAutomationRedesign.Framework.UI.Controls
 {
     public class Controller
     {
-        public By Locator { get; }
-        public Page Page { get;}
-        public IWebElement Element => Page.Driver.FindElement( Locator );
-
         public Controller(Page page, By locator)
         {
             Page = page;
             Locator = locator;
         }
 
-        public bool Displayed( int timeout )
+        public By Locator { get; }
+        public Page Page { get; }
+        public IWebElement Element => Page.Driver.FindElement(Locator);
+
+        public bool Displayed(int timeout)
         {
             try
             {
-                var wait = new WebDriverWait( Page.Driver , TimeSpan.FromSeconds( timeout ) );
-                wait.Until( drv => drv.FindElement( Locator ).Displayed );
+                var wait = new WebDriverWait(Page.Driver, TimeSpan.FromSeconds(timeout));
+                wait.Until(drv => drv.FindElement(Locator).Displayed);
             }
             catch (WebDriverException)
             {
@@ -34,20 +34,19 @@ namespace SelAutomationRedesign.Framework.UI.Controls
 
         public bool Displayed()
         {
-            return Displayed( Configuration.Timeout );
+            return Displayed(Configuration.Timeout);
         }
 
         public string Text()
         {
-            Assert.True( Displayed(), "Unable to Locate Element" );
+            Assert.True(Displayed(), "Unable to Locate Element");
             return Element.Text;
         }
 
         public virtual void Click()
         {
-            Assert.True( Displayed(), "Unable to Locate Element" );
+            Assert.True(Displayed(), "Unable to Locate Element");
             Element.Click();
         }
-
     }
 }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace SelAutomationRedesign.Framework.UI.Controls
 {
-    class FieldEdit : Controller
+    internal class FieldEdit : Controller
     {
         public FieldEdit(Page page, By locator) : base(page, locator)
         {
@@ -22,7 +17,6 @@ namespace SelAutomationRedesign.Framework.UI.Controls
                 Element.Clear();
                 Element.SendKeys(value);
             }
-
         }
     }
 }
