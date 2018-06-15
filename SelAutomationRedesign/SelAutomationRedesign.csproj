@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Framework\Core\Configuration.cs" />
     <Compile Include="Framework\UI\Controls\Controller.cs" />
+    <Compile Include="Framework\UI\Controls\FieldEdit.cs" />
+    <Compile Include="Framework\UI\Controls\SelectList.cs" />
     <Compile Include="Framework\UI\Page.cs" />
     <Compile Include="Pages\IndexPage.cs" />
     <Compile Include="SelAutomation.cs" />
