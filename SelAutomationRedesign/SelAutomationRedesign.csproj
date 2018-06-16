@@ -72,13 +72,13 @@
     <Compile Include="Framework\UI\Controls\FieldEdit.cs" />
     <Compile Include="Framework\UI\Controls\SelectList.cs" />
     <Compile Include="Framework\UI\Page.cs" />
-    <Compile Include="Pages\GithubProfilePage.cs" />
-    <Compile Include="Pages\GoogleSearchPage.cs" />
-    <Compile Include="SampleWebsite\Youtube.cs">
+    <Compile Include="Pages\GithubProfilePage_old.cs" />
+    <Compile Include="Pages\GoogleSearchPage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Youtube.tt</DependentUpon>
+      <DependentUpon>GoogleSearchPage.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GoogleSearchPage_old.cs" />
     <Compile Include="SelAutomation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,11 +87,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SampleWebsite\Youtube.tt">
+    <Content Include="Pages\GithubProfilePage.xml" />
+    <Content Include="Pages\GoogleSearchPage.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Youtube.cs</LastGenOutput>
+      <LastGenOutput>GoogleSearchPage.cs</LastGenOutput>
     </Content>
-    <Content Include="SampleWebsite\Youtube.xml" />
+    <Content Include="Pages\GoogleSearchPage.xml" />
     <Content Include="WebAutomation.Generator.dll" />
   </ItemGroup>
   <ItemGroup>

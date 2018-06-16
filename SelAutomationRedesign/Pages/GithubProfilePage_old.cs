@@ -8,9 +8,9 @@ using SelAutomationRedesign.Framework.UI;
 
 namespace SelAutomationRedesign.Pages
 {
-    class GithubProfilePage : Page
+    class GithubProfilePage_old : Page
     {
-        public GithubProfilePage(IWebDriver driverValue) : base(driverValue)
+        public GithubProfilePage_old(IWebDriver driverValue) : base(driverValue)
         {
         }
     }

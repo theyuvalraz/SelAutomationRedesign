@@ -1,0 +1,12 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(ProjectDir)WebAutomation.Generator.dll" #>
+<#@ import namespace="WebAutomation.Generator" #>
+
+<#
+string xmlFilename = "GoogleSearchPage.xml";
+string desiredNamespace  = "SelAutomationRedesign.Pages";
+string additionalUsing = string.Empty;
+#>
+
+<#=WebObjectsGenerator.Generate(Host.ResolvePath(xmlFilename), desiredNamespace, additionalUsing)#>

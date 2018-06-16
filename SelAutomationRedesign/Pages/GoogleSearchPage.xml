@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<container name="GoogleSearchPage">
+  <component name="Search" xpath="//*[@class='tsf-p']">
+    <component name="SearchField" xpath="/div[2]//input[1]" />
+    <component name="SearchButton" xpath="/div[3]//input[1]" />
+    <component name="FeelingLuckyButton" xpath="/div[3]//input[2]" />
+  </component>
+</container>
