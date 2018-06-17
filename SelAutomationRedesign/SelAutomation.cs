@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SelAutomationRedesign.Pages;
 using WebAutomation.Core;
@@ -7,50 +6,29 @@ using WebAutomation.Core;
 namespace SelAutomationRedesign
 {
     [TestFixture]
+    [Property( "type", "ui" )]
     public class SelAutomation
     {
+        public IAutomationDriver ATDriver { get; set; }
+
         [SetUp]
         public void Setup()
         {
-            
             var options = new ChromeOptions();
             options.AddArguments("--lang=en-GB", "start-maximized");
-            _driver = new ChromeDriver(options);
-            _indexPage = new GoogleSearchPage_old(_driver);
             ATDriver = AutomationDriverFactory.Get();
-            ATDriver.WebDriver = _driver;
-
+            ATDriver.WebDriver = new ChromeDriver( options ); ;
         }
 
 
         [TearDown]
         public void TearDown()
         {
-            _driver.Quit();
-        }
-        public IAutomationDriver ATDriver { get; set; }
-
-        private IWebDriver _driver;
-        private GoogleSearchPage_old _indexPage;
-
-
-        [TestCase]
-        public void BasicsTest()
-        {
-            _indexPage.Navigate();
-            Assert.That(_driver.Title == "Google");
+            ATDriver.WebDriver.Quit();
         }
 
-        [TestCase]
-        public void LuckyTest()
-        {
-            _indexPage.Navigate();
-            Assert.That(_indexPage.FeelingLuckyButton.Element.GetAttribute("value") == "I\'m Feeling Lucky");
-            _indexPage.FeelingLuckyButton.Click();
-            Assert.That(_driver.Title == "Google Doodles");
-        }
 
-        [TestCase]
+        [Test]
         public void LuckyTest_WebAutomation()
         {
             ATDriver.WebDriver.Navigate().GoToUrl( "http://www.google.com" );
@@ -59,23 +37,27 @@ namespace SelAutomationRedesign
             Assert.That( ATDriver.WebDriver.Title == "Google Doodles" );
         }
 
-        [TestCase]
-        public void SearchTest()
-        {
-            _indexPage.Navigate();
-            _indexPage.SearchField.Text = "theyuvalraz";
-            _indexPage.FeelingLuckyButton.Click();
-            Assert.That(_driver.Url == "https://github.com/theyuvalraz");
-        }
-
-        [TestCase]
+        [Test]
         public void SearchTest_WebAutomation()
         {
             ATDriver.WebDriver.Navigate().GoToUrl( "http://www.google.com" );
             var searchPage = ATDriver.Get<GoogleSearchPage>();
-            searchPage.SearchSearchField.Perform.Fill("theyuvalraz");
+            searchPage.SearchSearchField.Perform.Fill( "Yuval Raz github" );
             searchPage.SearchFeelingLuckyButton.Perform.Click();
             Assert.That( ATDriver.WebDriver.Url == "https://github.com/theyuvalraz" );
+        }
+
+        [Test]
+        public void GlobalElementTest()
+        {
+            ATDriver.WebDriver.Navigate().GoToUrl( "https://github.com/theyuvalraz" );
+            var GithubPage = ATDriver.Get<Github>();
+            GithubPage.GlobalHeaderMenu_Features.Perform.Click();
+            Assert.That( GithubPage.GlobalHeaderMenu_Explore.WillBe.Present);
+            Assert.That( GithubPage.GlobalHeaderMenu_Features.WillBe.Present );
+            Assert.That( GithubPage.GlobalHeaderMenu_Business.WillBe.Present );
+            Assert.That( GithubPage.GlobalHeaderMenu_Marketplace.WillBe.Present );
+            Assert.That( GithubPage.GlobalHeaderMenu_Pricing.WillBe.Present );
         }
     }
 }
