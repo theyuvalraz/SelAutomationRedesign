@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 
 <container name="Github">
-    <component name="GlobalHeaderMenu" xpath="//div/div[2]/nav/ul">
-      <component name="_Features" xpath="/li[1]" />
-      <component name="_Business" xpath="/li[2]" />
-      <component name="_Explore" xpath="/li[3]" />
-      <component name="_Marketplace" xpath="/li[4]" />
-      <component name="_Pricing" xpath="/li[5]" />
-    </component>
-  </container>
+  <component name="GlobalHeaderMenu" xpath="//div/div[2]/nav/ul">
+    <component name="_Features" xpath="/li[1]" />
+    <component name="_Business" xpath="/li[2]" />
+    <component name="_Explore" xpath="/li[3]" />
+    <component name="_Marketplace" xpath="/li[4]" />
+    <component name="_Pricing" xpath="/li[5]" />
+  </component>
+</container>

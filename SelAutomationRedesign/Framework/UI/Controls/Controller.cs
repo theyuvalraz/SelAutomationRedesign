@@ -29,6 +29,7 @@ namespace SelAutomationRedesign.Framework.UI.Controls
             {
                 return false;
             }
+
             return true;
         }
 
