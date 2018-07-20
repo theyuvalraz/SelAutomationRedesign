@@ -15,7 +15,7 @@ namespace SelAutomationRedesign
             var options = new ChromeOptions();
             options.AddArguments("--lang=en-GB", "start-maximized");
             ATDriver = AutomationDriverFactory.Get();
-            ATDriver.WebDriver = new ChromeDriver(options);
+            ATDriver.WebDriver = new ChromeDriver("tools\\chromedrive",options);
             ;
         }
 
